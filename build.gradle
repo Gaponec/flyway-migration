@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id "org.flywaydb.flyway" version '6.2.0'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+ext {
+    postgresqlVersion = '42.2.9'
+}
+
+dependencies {
+    implementation "org.postgresql:postgresql:${postgresqlVersion}"
+}
+
+repositories {
+    mavenCentral()
+}
+
+flyway {
+    url = 'jdbc:postgresql://localhost:5433/store'
+    user = 'postgres'
+    password = 'root'
+}
